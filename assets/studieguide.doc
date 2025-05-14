@@ -1,0 +1,165 @@
+🧠 Studieguide Vecka 20: API-säkerhet med JWT – Autentisering & Auktorisering med JWT
+🎯 Övergripande mål för veckan
+Förstå vad autentisering och auktorisering innebär i ett API-sammanhang.
+
+
+Skapa och verifiera JSON Web Tokens (JWT) i ett Express-API.
+
+
+Lära sig använda bcryptjs för att säkert hantera lösenord.
+
+
+Implementera skyddade routes med middleware.
+
+
+
+📘 Lärandemål
+K4: Förklara hur autentisering och auktorisering implementeras med JWT eller sessionshantering.
+
+
+F3: Implementera autentisering och auktorisering i backendapplikationer.
+
+📅 Veckans upplägg
+📍 Måndag 2025-05-12 – Check Point
+🕘 Tid: 09:00–12:00
+ Aktivitet:
+Feedback och genomgång av era Chas Challenge-projekt.
+
+💻 Onsdag 2025-05-14 – Workshop: JWT – autentisering & auktorisering
+🕘 Tid: 09:00–12:00
+🎯 Mål för dagen:
+Logga in användare och generera JWT.
+
+
+Grunder i att skydda endpoints.
+Förstå skillnaden mellan autentisering (vem är du?) och auktorisering (får du göra detta?).
+
+
+
+📖 Rekommenderad läsning:
+📄 JWT.io Introduction: https://jwt.io/introduction
+Implementing JWT Authentication in Node.js: En praktisk guide för att implementera JWT-autentisering i Node.js:
+https://www.sohamkamani.com/nodejs/jwt-authentication/
+
+📄 JWT Authentication Best Practices: 
+https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs
+https://curity.io/resources/learn/jwt-best-practices/
+
+🎥 Videoresurser:
+What is JWT? : https://www.youtube.com/watch?v=926mknSW9Lo
+📹 JWT Authentication Tutorial
+https://www.youtube.com/watch?v=bSI2zOQm7qM
+
+🔨 Praktiska övningar – Onsdag
+🟢
+
+
+🟠 1. Logga in och skapa JWT
+Route: POST /login
+
+
+Kontrollera användare i array/mockdata
+
+
+Om korrekt → jwt.sign(payload, secret, options)
+
+
+Returnera token
+
+
+🔵 2. Skapa skyddad route GET /me
+Skapa en middleware som kontrollerar JWT-token (Authorization: Bearer ...).
+
+
+Returnera användardata om token är giltig → returnera req.user
+
+💡 Torsdag 2025-05-15 – Workshop: Säkerhet i API:et, bcryptjs för lösenordshashning
+🕘 Tid: 09:00–12:00 & 13:00–15:00
+🎯 Mål för dagen:
+Skapa användare med hashade lösenord med bcryptjs.
+
+
+Implementera skyddade endpoints och rollbaserad åtkomst.
+
+
+Förstå vanliga säkerhetsbrister (ex: token-förfalskning, dataläckor).
+
+
+
+📖 Läsning:
+How to Hash Passwords with bcrypt in Node.js – freeCodeCamp: En detaljerad guide om hur man använder bcrypt för att hasha lösenord i Node.js.
+https://www.freecodecamp.org/news/how-to-hash-passwords-with-bcrypt-in-nodejs/
+
+
+📄 bcryptjs GitHub Readme
+Mastering Security: Role-Based Access Control in Node.js with JWT: En guide för att implementera rollbaserad åtkomstkontroll med JWT i Node.js:
+https://blog.stackademic.com/mastering-security-role-based-access-control-in-node-js-with-jwt-1d653f6e35dc
+🎥 Videoresurser:
+
+
+Node.js & Express Role-Based Authorization Tutorial: En praktisk genomgång av hur man implementerar rollbaserad auktorisering i Node.js och Express:
+https://www.youtube.com/watch?v=HHuiV841g_w
+Hashing Passwords in Node and Express using bcrypt: En video som visar hur man hashar lösenord med bcrypt i Node och Express:
+https://www.youtube.com/watch?v=AzA_LTDoFqY
+📹 bcryptjs explained simply
+community.auth0.com+22YouTube+22Medium+22
+
+🔨 Praktiska övningar – Torsdag
+🟢1. Registrera användare med bcrypt (Hasha lösenord)
+Skapa en route /register som sparar en användare med hashat lösenord med bcrypt.hash().
+Spara användare i mock/array/db
+
+
+Testa med Postman.
+🟣 2. Middleware för att verifiera JWT
+Skapa en verifyToken-middleware som kontrollerar Authorization: Bearer.
+
+
+Lägg den på skyddade routes (/me, /admin, etc).
+
+
+🔴 3. Rollbaserad auktorisering (medel-svår)
+Låt användare ha en role-egenskap (t.ex. admin, user).
+
+
+Skapa middleware requireRole(role) som bara tillåter vissa användare till en route.
+
+
+🟡 4. Felhantering och säkerhetstänk
+Returnera 401 Unauthorized vid ogiltiga tokens.
+
+
+Vad händer om token är saknad?
+
+
+Undvik att spara lösenord i klartext.
+
+
+Diskutera: när ska token sparas i frontend – och hur? (httpOnly cookies vs localStorage)
+
+🚩 Fredag 2025-05-16 – Chas Challenge: 🕘 Tid: 08:30–12:30
+ “Mål”:
+Inloggningsflöde är implementeras (register/login).
+
+
+JWT används för att skydda endpoints.
+
+
+Express-API innehåller minst en skyddad route.
+
+
+
+🧪 Tips för studierna
+Använd Postman för att testa alla säkerhetsflöden.
+
+
+Lägg alla autentiseringsdelar i en egen authRouter.
+
+
+Isolera logik i middlewares (verifyToken, requireRole).
+
+
+Använd .env för din JWT_SECRET.
+
+
+
