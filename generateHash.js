@@ -6,4 +6,4 @@ const generateHash = async (password) => {
   console.log('Generated hash:', hash);
 };
 
-generateHash('hunter2');
+generateHash('BoilerRoom');
